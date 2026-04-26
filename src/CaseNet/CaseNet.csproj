@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <IsPackable>true</IsPackable>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Nuget">
+        <Title>CaseNet</Title>
+        <Description>Use case pattern with source generation for .NET</Description>
+
+        <Authors>Droubnier</Authors>
+        <Copyright>© 2026 CaseNet</Copyright>
+
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>usecase;source-generator;dotnet</PackageTags>
+
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <RepositoryUrl>https://github.com/Darbestor/CaseNet</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+        <None Include="build\CaseNet.props" Pack="true" PackagePath="build\CaseNet.props"/>
+        <ProjectReference Include="..\CaseNet.Abstractions\CaseNet.Abstractions.csproj">
+            <PrivateAssets>all</PrivateAssets>
+        </ProjectReference>
+        <ProjectReference Include="..\CaseNet.Generator\CaseNet.Generator.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"/>
+
+        <TfmSpecificPackageFile
+                Include="../CaseNet.Abstractions/bin/$(Configuration)/netstandard2.1/CaseNet.Abstractions.dll"
+                Pack="true"
+                PackagePath="lib/$(TargetFramework)" Visible="true"/>
+
+        <TfmSpecificPackageFile
+                Include="../CaseNet.Generator/bin/$(Configuration)/netstandard2.0/CaseNet.Generator.dll"
+                Pack="true"
+                PackagePath="analyzers/dotnet/cs/" Visible="true"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MinVer" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <PropertyGroup Label="MinVer">
+        <MinVerAutoIncrement>minor</MinVerAutoIncrement>
+        <MinVerDefaultPreReleaseIdentifiers>preview.0</MinVerDefaultPreReleaseIdentifiers>
+        <MinVerTagPrefix>v</MinVerTagPrefix>
+    </PropertyGroup>
+</Project>
