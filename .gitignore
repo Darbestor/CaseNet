@@ -1,0 +1,26 @@
+
+# Rider folders
+riderModule.iml
+/_ReSharper.Caches/
+
+# Build results
+[Bb]in/
+[Oo]bj/
+/packages/
+
+# Visual Studio cache/options directory
+.vs/
+*.user
+
+# VS Code cache/options directory
+.vscode/
+
+# Rider temporary files
+.idea/
+
+# TestResults
+[Tt]est[Rr]esults/
+BenchmarkDotNet.Artifacts/
+
+# Verify
+*.received.*
