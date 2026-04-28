@@ -7,13 +7,6 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddUseCases(this IServiceCollection services)
     {
-        services.Scan(scan => scan
-            .FromAssembliesOf(typeof(Program))
-            .AddClasses(classes => classes.AssignableTo(typeof(IUseCase<,>)))
-            .AsSelf()
-            .AsImplementedInterfaces()
-            .WithTransientLifetime());
-
         services.AddCaseNetExampleUseCases();
         return services;
     }

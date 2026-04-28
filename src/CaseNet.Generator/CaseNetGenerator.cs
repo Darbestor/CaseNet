@@ -115,7 +115,7 @@ public class CaseNetGenerator : IIncrementalGenerator
         var diCode = Templates.RenderDiRegistrationTemplate(
             @namespace,
             assemblyName,
-            interactors.Select(x => $"{x.Namespace}.{x.InteractorName}").ToArray());
+            interactors.Select(x => $"global::{x.Namespace}.{x.InteractorName}").ToArray());
         ctx.AddSource("GeneratedUseCaseRegistrations.g.cs", SourceText.From(diCode, Encoding.UTF8));
     }
 

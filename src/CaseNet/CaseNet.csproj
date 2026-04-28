@@ -37,9 +37,10 @@
                 PackagePath="lib/$(TargetFramework)" Visible="true"/>
 
         <TfmSpecificPackageFile
-                Include="../CaseNet.Generator/bin/$(Configuration)/netstandard2.0/CaseNet.Generator.dll"
+                Include="../CaseNet.Generator/bin/$(Configuration)/netstandard2.0/CaseNet.Generator.dll;
+../CaseNet.Generator/bin/$(Configuration)/netstandard2.0/Scriban.dll"
                 Pack="true"
-                PackagePath="analyzers/dotnet/cs/" Visible="true"/>
+                PackagePath="analyzers/dotnet/roslyn4.0/cs/" Visible="true"/>
     </ItemGroup>
 
     <ItemGroup>
